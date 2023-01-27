@@ -1,0 +1,41 @@
+Package: WeedR
+Type: Package
+Title: A Shiny R Package For Weed Scientists
+Version: 0.1.0
+Author@R: person("Lucas", "Bobadilla", email = "lucask3@illinois.edu",
+  role = c("aut", "cre"),
+  comment = c(ORCID = "0000-0002-1222-2239")
+Description: A package for Weed scientists that want to use R,
+    but do not have the time to learn how to code! Make your experimental design,
+    analysis using the Shiny interface without any code. Common applications in this package
+    includes experimental design, linear regression, dose response and more.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 4.1.0)
+Imports: 
+    broom,
+    datamods,
+    dplyr,
+    drc,
+    DT,
+    generics,
+    ggfortify,
+    ggplot2,
+    ggridges,
+    grid,
+    kableExtra,
+    magrittr,
+    patchwork,
+    plotly,
+    purrr,
+    RColorBrewer,
+    readr,
+    rhandsontable,
+    shiny,
+    shinydashboard,
+    stats,
+    tibble,
+    tidyr,
+    tidyselect
+RoxygenNote: 7.2.3
