@@ -47,7 +47,7 @@ fit_linear_model <- function(dataframe, formula,
 
   # get model fit plots
 
-  mod_fit <- ggfortify:::autoplot.lm(f_lm)
+  mod_fit <- performance::check_model(f_lm)#ggfortify:::autoplot.lm(f_lm)
 
   # get model anova
 

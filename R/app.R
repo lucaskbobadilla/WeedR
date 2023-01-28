@@ -486,13 +486,15 @@ overflow-y:scroll; background: ghostwhite;}"))
       title = "5. Check your assumptions",
       status = "primary",
       solidHeader = TRUE,
-      collapsible = TRUE,
       width=12,
+      height = 800,
+
+      #shiny::downloadButton(outputId = 'download_LM_fit_plot',
+       #                     label = 'Download Plot'),
 
       shiny::plotOutput(outputId = "LM_fit_plot"),
 
-      # shiny::downloadButton(outputId = 'download_LM_fit_plot',
-      #                       label = 'Download Plot')
+
 
 
     )
@@ -522,17 +524,26 @@ overflow-y:scroll; background: ghostwhite;}"))
       status = "primary",
       solidHeader = TRUE,
       collapsible = TRUE,
+      width = 12,
 
       DT::dataTableOutput(outputId = "LM_posthoc_table")
 
 
     ),
 
+
+
+
+  ),
+
+  shiny::fluidRow(
+
     shinydashboard::box(
       title = "Means plot:",
       status = "primary",
       solidHeader = TRUE,
       collapsible = TRUE,
+      width = 12,
 
       shiny::plotOutput(outputId = "posthoc_plot_LM"),
 
@@ -541,8 +552,6 @@ overflow-y:scroll; background: ghostwhite;}"))
 
 
     )
-
-
 
   )
 
@@ -1021,15 +1030,23 @@ server <- function(input, output, session) {
 
     LM_results()$fit_plot
 
-  }, res = 96)
+  },height = 700)
 
+  lm_plot_fit <- reactive({
+    LM_results()$fit_plot
+  })
   ## NEED TO FIX THIS ###
-  output$download_LM_fit_plot <- shiny::downloadHandler(
-    filename = function(){paste("fit_plots_LM_WeedR",'.png',sep='')},
-    content = function(file){
-      ggplot2::ggsave(file,grid::grid.draw(LM_results()$fit_plot), dpi = 300)
-    }
-  )
+  # output$download_LM_fit_plot <- shiny::downloadHandler(
+  #   filename = function(){paste("fit_plots_LM_WeedR",'.png',sep='')},
+  #   device <- function(..., width, height) {
+  #     grDevices::png(..., width = width, height = height,
+  #                    res = 300, units = "in")
+  #   },
+  #   content = function(file){
+  #     ggplot2::ggsave(filename = file, plot = lm_plot_fit(), device = device)
+  #   }
+  #
+  # )
   ## NEED TO FIX THIS ### DOWNLOAD NOT WORKING
 
 
